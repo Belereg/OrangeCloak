@@ -28,7 +28,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:hint="Name"
-        android:inputType="number"
+        android:inputType="text"
         android:textColor="@color/orange"
         android:textColorHint="@color/orange"
         android:textSize="19sp"

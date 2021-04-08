@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ecommerce.Model.Users;
+import com.example.ecommerce.Prevalent.Prevalent;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -116,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                               loadingBar.dismiss();
 
                               Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                              Prevalent.currentOnlineUser = usersData;
                               startActivity(intent);
                           }
                         }

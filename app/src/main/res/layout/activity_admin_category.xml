@@ -29,7 +29,7 @@
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="25dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 
@@ -68,7 +68,7 @@
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_marginTop="75dp">
+        android:layout_marginTop="25dp">
 
         <ImageView
             android:id="@+id/glasses"
@@ -104,7 +104,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linear2_category_layout"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="25dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -134,4 +134,32 @@
             android:src="@drawable/mobiles" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/check_orders_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_above="@+id/admin_logout_btn"
+        android:background="@color/orange"
+        android:text="Check new orders"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:id="@+id/admin_logout_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/orange"
+        android:text="Logout"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        />
 </RelativeLayout>

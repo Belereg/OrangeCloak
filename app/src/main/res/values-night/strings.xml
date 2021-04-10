@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">eCommerce</string>
-    <string name="product_name">Product Name</string>
     <string name="add_product">Add Product</string>
-    <string name="product_price">Product Price</string>
+    <string name="product_name">Product Name</string>
     <string name="product_description">Product Description</string>
+    <string name="product_price">Product Price</string>
 </resources>

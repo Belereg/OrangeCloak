@@ -123,7 +123,6 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
         }
     }
 
-
     private void removeOrder(String uId) {
         ordersRef.child(uId).removeValue();
     }

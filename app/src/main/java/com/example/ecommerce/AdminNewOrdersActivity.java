@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,6 +57,19 @@ public class AdminNewOrdersActivity extends AppCompatActivity
                         holder.userTotalPrice.setText("Total Amount: $" + model.getTotalAmount());
                         holder.userDateTime.setText("Order at: " + model.getDate() + " " + model.getTime());
                         holder.userShippingAddress.setText("Shipping Address: " + model.getAddress() + ", " +model.getCity());
+
+                        holder.ShowOrdersBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                String uId = getRef(position).getKey();
+
+                                Intent intent = new Intent(AdminNewOrdersActivity.this, AdminUserProductsActivity.class);
+                                intent.putExtra("uid", uId);
+                                startActivity(intent);
+
+                            }
+                        });
                     }
 
                     @NonNull

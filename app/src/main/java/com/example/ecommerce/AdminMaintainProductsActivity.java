@@ -58,27 +58,18 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
     }
 
 
-
-
     private void applyChanges() {
         String pName = name.getText().toString();
         String pPrice = price.getText().toString();
         String pDescription = description.getText().toString();
 
-        if(pName.equals(""))
-        {
+        if (pName.equals("")) {
             Toast.makeText(this, "Write Down Product Name.", Toast.LENGTH_SHORT).show();
-        }
-        else if (pPrice.equals(""))
-        {
+        } else if (pPrice.equals("")) {
             Toast.makeText(this, "Write Down Product Price.", Toast.LENGTH_SHORT).show();
-        }
-        else if (pDescription.equals(""))
-        {
+        } else if (pDescription.equals("")) {
             Toast.makeText(this, "Write Down Product Description.", Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
+        } else {
             HashMap<String, Object> productMap = new HashMap<>();
             productMap.put("pid", productID);
             productMap.put("description", pDescription);
@@ -88,8 +79,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
             productsRef.updateChildren(productMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful())
-                    {
+                    if (task.isSuccessful()) {
                         Toast.makeText(AdminMaintainProductsActivity.this, "Changes applied succesfully!", Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(AdminMaintainProductsActivity.this, AdminCategoryActivity.class);
@@ -106,8 +96,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists())
-                {
+                if (snapshot.exists()) {
                     String pName = snapshot.child("pname").getValue().toString();
                     String pPrice = snapshot.child("price").getValue().toString();
                     String pDescription = snapshot.child("description").getValue().toString();

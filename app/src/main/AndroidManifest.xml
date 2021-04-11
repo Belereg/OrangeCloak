@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECommerce"
         tools:replace="android:theme">
-        <activity android:name=".SearchProductActivity"></activity>
+        <activity android:name=".AdminMaintainProductsActivity"></activity>
+        <activity android:name=".SearchProductActivity" />
         <activity android:name=".AdminUserProductsActivity" />
         <activity android:name=".AdminNewOrdersActivity" />
         <activity android:name=".ConfirmFinalOrderActivity" />

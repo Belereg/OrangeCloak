@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 public class AdminCategoryActivity extends AppCompatActivity {
 
-    private ImageView tShirts,sportsTShirts, femaleDresses, sweaters;
+    private ImageView tShirts, sportsTShirts, femaleDresses, sweaters;
     private ImageView glasses, hatsCaps, walletsBagsPurses, shoes;
     private ImageView headPhonesHandFree, laptops, watches, mobilePhone;
 
@@ -27,8 +27,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
 
         maintainProductsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 Intent intent = new Intent(AdminCategoryActivity.this, HomeActivity.class);
                 intent.putExtra("Admin", "Admin");
                 startActivity(intent);

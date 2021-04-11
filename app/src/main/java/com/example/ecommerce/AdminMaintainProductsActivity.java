@@ -7,8 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-public class AdminMaintainProductsActivity extends AppCompatActivity
-{
+public class AdminMaintainProductsActivity extends AppCompatActivity {
 
     private Button applyChangesBtn;
     private EditText name, price, description;
@@ -20,7 +19,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity
         setContentView(R.layout.activity_admin_maintain_products);
 
         applyChangesBtn = findViewById(R.id.apply_changes_btn);
-        name= findViewById(R.id.product_name_maintain);
+        name = findViewById(R.id.product_name_maintain);
         price = findViewById(R.id.product_price_maintain);
         description = findViewById(R.id.product_description_maintain);
         imageView = findViewById(R.id.product_image_maintain);

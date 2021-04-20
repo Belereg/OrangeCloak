@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CartActivity">
+    tools:context=".CartActivity"
+    android:orientation="horizontal">
 
     <RelativeLayout
         android:id="@+id/rl11"
@@ -45,18 +46,17 @@
         android:id="@+id/cart_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/next_process_btn"
         android:layout_below="@+id/rl11"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="9dp" />
+        android:layout_above="@+id/next_process_btn"
+        />
 
     <Button
         android:id="@+id/remind_process_btn"
-        android:layout_width="371dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_above="@id/next_process_btn"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="75dp"
         android:layout_marginLeft="11dp"
         android:background="@color/orange"
@@ -80,21 +80,24 @@
         android:id="@+id/without_vat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/remind_process_btn"
-        android:layout_marginLeft="11dp"
+        android:layout_above="@id/next_process_btn"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="7dp"
+        android:layout_toRightOf="@+id/remind_process_btn"
         android:background="@color/orange"
         android:onClick="ChangeFragment"
         android:padding="10dp"
         android:text="Price without VTA"
-        android:textColor="@color/white"
-        android:orientation="vertical"/>
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/with_vat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/remind_process_btn"
-        android:layout_marginLeft="176dp"
+        android:layout_marginBottom="7dp"
+        android:layout_above="@id/next_process_btn"
+        android:layout_toRightOf="@id/without_vat"
+        android:layout_marginLeft="10dp"
         android:background="@color/orange"
         android:onClick="ChangeFragment"
         android:padding="10dp"
@@ -102,13 +105,16 @@
         android:textColor="@color/white" />
 
     <fragment
-        android:name="com.example.ecommerce.VatPrice"
         android:id="@+id/price_fragment"
-        android:layout_width="95dp"
-        android:layout_height="55dp"
-        android:layout_alignRight="@+id/with_vat"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="-103dp"
-        android:layout_marginTop="525dp" />
+        android:name="com.example.ecommerce.VatPrice"
+        android:layout_width="133dp"
+        android:layout_height="45dp"
+        android:layout_above="@+id/next_process_btn"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="125dp"
+        android:layout_marginBottom="8dp"
+
+        android:layout_toRightOf="@id/with_vat" />
+
 
 </RelativeLayout>

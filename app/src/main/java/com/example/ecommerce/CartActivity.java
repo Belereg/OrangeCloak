@@ -6,8 +6,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlarmManager;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,10 +44,15 @@ public class CartActivity extends AppCompatActivity {
     private Button nextProcessbtn;
     private TextView txtTotalAmount, txtMsg1;
     private int totalPrice = 0;
+    private Button remindMeLater;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+
+        createNotificationChannel();
 
         recyclerView = findViewById(R.id.cart_list);
         recyclerView.setHasFixedSize(true);
@@ -48,6 +61,23 @@ public class CartActivity extends AppCompatActivity {
         nextProcessbtn = (Button) findViewById(R.id.next_process_btn);
         txtTotalAmount = (TextView) findViewById(R.id.total_price);
         txtMsg1 = (TextView) findViewById(R.id.msg1);
+        remindMeLater = (Button) findViewById(R.id.remind_process_btn);
+
+        remindMeLater.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(CartActivity.this,"Reminder set", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(CartActivity.this, ReminderBroadcast.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(CartActivity.this,0,intent,0);
+
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                long timeAtButtonClick = System.currentTimeMillis();
+
+                long tenSecondsInMilis = 1000*10;
+                alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtButtonClick + tenSecondsInMilis, pendingIntent);
+            }
+        });
 
         nextProcessbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +88,26 @@ public class CartActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void ChangeFragment(View view){
+        Fragment fragment;
+        if (view == findViewById(R.id.with_vat)){
+            Toast.makeText(CartActivity.this,"withVAT", Toast.LENGTH_SHORT).show();
+            fragment = new VatPrice();
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.price_fragment,fragment);
+            ft.commit();
+        }
+        if (view == findViewById(R.id.without_vat)){
+            Toast.makeText(CartActivity.this,"withoutVAT", Toast.LENGTH_SHORT).show();
+            fragment = new WithoutVatPrice();
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.price_fragment,fragment);
+            ft.commit();
+        }
     }
 
     @Override
@@ -157,7 +207,18 @@ public class CartActivity extends AppCompatActivity {
         adapter.startListening();
     }
 
+    private void createNotificationChannel(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name = "OrangeCloakReminder";
+            String descripton = "Best shopping app!";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("notifyUser", name, importance);
+            channel.setDescription(descripton);
 
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
     private void CheckOrderState()
     {
         DatabaseReference ordersRef;
